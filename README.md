@@ -21,7 +21,7 @@ const request = {
   registered: '3/1/18',
   externalid: '416ac246-e7ac-49ff-93b4-f7e94d997e6b',
   price: '9.99',
-  priceunit: 'USD',
+  priceunit: 'usd',
   garbageProperty1: 'dq2dq2da2dre2e',
   garbageProperty2: {
     a: 'dasd'
@@ -38,12 +38,12 @@ try {
   .strOpt('commentary').trimDeep()
   .date('registered', '1/1/18').format('M/D/YY').range('1/1/18', moment()).toString('YYYY-MM-DD')
   .uuidV4('externalid').rename('external_id')
-  .str('priceunit').any(['USD', 'CENT']).rename('price_unit')
+  .str('priceunit').toUpperCase().any(['USD', 'CENT']).rename('price_unit')
   .num('price').min(0).apply((price, props) => {
     if (props.price_unit === 'USD') {
       props.price_unit = 'CENT'
       return price * 100
-    }
+    } else return price
   }).integer().rename('price_cents')
   .delete('price_unit')
   .flag('iscat', false).rename('is_cat')
