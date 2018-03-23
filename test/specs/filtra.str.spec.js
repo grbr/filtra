@@ -84,6 +84,16 @@ describe('.str', () => {
       }).should.throw(Error)
     })
   })
+  describe('.notMatch(regex)', () => {
+    it('writes string for proper string', () => {
+      should.equal(Filtra({x: 'good'}).str('x').notMatch(/^bad/).filter().x, 'good')
+    })
+    it('throws error for bad srting', () => {
+      ;(() => {
+        Filtra({x: 'bad'}).str('x').notMatch(/^bad/).filter().x
+      }).should.throw(Error)
+    })
+  })
   describe('.min(minLength)', () => {
     it('writes string for proper string', () => {
       should.equal(Filtra({x: 'good'}).str('x').min(4).filter().x, 'good')

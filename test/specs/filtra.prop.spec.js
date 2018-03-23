@@ -99,4 +99,14 @@ describe('.prop', () => {
       }).should.throw(Error)
     })
   })
+  describe('.eq(val)', () => {
+    it('returns value if equals', () => {
+      should.equal(Filtra({x: 4}).prop('x').eq(4).filter().x, 4)
+    })
+    it('or throws if not equals', () => {
+      ;(() => {
+        Filtra({x: 4}).prop('x').eq(1)
+      }).should.throw(Error)
+    })
+  })
 })
