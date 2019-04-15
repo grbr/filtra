@@ -64,6 +64,7 @@ describe('readme example', () => {
       .int('ownerid').min(100)
     } catch (error) {
       console.log('what\'s wrong:', error.message)
+      console.log('param:', error.param)
       /* prints
         what's wrong: ownerid can't be less than 100
       */
