@@ -1,6 +1,6 @@
 {
   "name": "filtra",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "validate and filter incoming data",
   "main": "index.js",
   "scripts": {
